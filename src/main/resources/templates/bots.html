@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html  lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>bots</title>
+</head>
+<body>
+<h1>Список ботов</h1><br>
+
+<div>
+    <table border="1">
+        <thead>
+        <tr>
+            <th> id </th>
+            <th>  Имя бота  </th>
+            <th>  Токен бота  </th>
+            <th> Время рассылки </th>
+            <th> Активность </th>
+            <th> Управление </th>
+            <th> Подробнее </th>
+
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr th:each="bot : ${botSettings}">
+            <th th:text="${bot.id}"></th>
+            <th th:text="${bot.name}"></th>
+            <th th:text="${bot.tokenbot}"></th>
+            <th th:text="${bot.timeTask}"></th>
+            <th th:text="${bot.active}? 'Активен' : 'Не активен'"></th>
+            <th>
+            <form th:action="'/botsetting/update/'+${bot.id}" method="post">
+<!--                <input type="hidden" name="_csrf" value="${_csrf.token}">-->
+                <input type="submit" value="Активность">
+            </form>
+            </th>
+            <th><a th:href="'/bot-info/'+ ${bot.id}">Информация</a></th>
+        </tr>
+
+        </tbody>
+    </table>
+    <br> <br>
+    <p><a th:href="'/creatingbot'">Создать нового бота</a></p>
+ </div>
+
+    </body>
+    </html>

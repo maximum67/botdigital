@@ -1,0 +1,26 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!--    <title>БОТ</title>-->
+    <title th:text="${title}"/>
+</head>
+<body>
+<h1>Бот!</h1>
+<hr>
+<h4>Содаем бота!</h4><br><br>
+<form th:action="'/botsetting/create'" method="post">
+    <p>Имя бота :</p><input type="text" name="name"/><br>
+    <p>Токен бота :</p> <input type="text" name="tokenbot"/><br><br>
+    <p>Чат ID :</p> <input type="number" name="chatId"/><br><br>
+    <p>Имя файла рассылки :</p> <input type="text" name="fileName"/><br><br>
+    <p> Время рассылки :</p> <input type="time" name="timeTask"/><br><br>
+
+<!--    <input type="hidden" name="_csrf" value="${_csrf.token}"/>-->
+    <input type="submit" value="Создать бота!"/>
+</form>
+<hr>
+<h3 th:text="${errorMessage}"></h3>
+<!--<form action="/botsetting/delete/${botsetting.id}" method="post">-->
+<!--    <input type="submit" value="Удалить бота"/>-->
+<!--</form>-->
+</body>
+</html>

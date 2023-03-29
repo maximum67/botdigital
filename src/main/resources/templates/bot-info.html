@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<!--    <title>БОТ</title>-->
+    <title th:text="${title}"/>
+</head>
+<body>
+<h1>Бот!</h1>
+<hr>
+<h3>Подробная информация о боте</h3>
+<form th:action="'/botsetting/allupdate/'+ ${botSetting.id}" method="post">
+<div>
+<b>Имя бота : </b><b th:text="${botSetting.name}"></b> <br>
+<b>Токен бота : </b><b th:text="${botSetting.tokenbot}"></b> <br>
+<b>Чат ID : </b>  <input type="number" name="chatId" th:value="${botSetting.chatId}"/> <br>
+<b>Имя файла рассылки : </b><input type="text" name="fileName" th:value="${botSetting.fileName}"/> <br>
+<b>Время рассылки : </b> <input type="time" name="timeTask" th:value="${botSetting.timeTask}"/> <br>
+<b>Активность : </b><b th:text="${botSetting.active}? ' Активен':' Не активен'"></b> <br>
+</div><br>
+<hr><br>
+<input type="submit" value="Сохранить настройки"/><br>
+</form><br>
+<hr><br><br>
+<form th:action="'/botsetting/delete/'+ ${botSetting.id}" method="post">
+<input type="submit" value="Удалить бота"/>
+</form>
+</body>
+</html>
